@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{542351D4-6C1F-4A8F-A342-6B3164E758EA}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{F2A71F9B-5D33-465A-A702-920D77279786}</ProjectTypeGuids>
+    <UseStandardResourceNames>true</UseStandardResourceNames>
+    <OutputType>Library</OutputType>
+    <RootNamespace>App.Android.NetFX</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>App.Android.NetFX</AssemblyName>
+    <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest></AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <JavaMaximumHeapSize></JavaMaximumHeapSize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <PlatformTarget></PlatformTarget>
+    <JavaMaximumHeapSize></JavaMaximumHeapSize>
+    <AndroidUseAapt2>false</AndroidUseAapt2>
+    <AndroidManifest></AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <GenerateTailCalls>true</GenerateTailCalls>
+    <PlatformTarget></PlatformTarget>
+    <JavaMaximumHeapSize></JavaMaximumHeapSize>
+    <AndroidUseAapt2>false</AndroidUseAapt2>
+    <AndroidManifest></AndroidManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FSharp.Core, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\..\packages\FSharp.Core.6.0.1\lib\netstandard2.1\FSharp.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="mscorlib" />
+    <Reference Include="Mono.Android" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\AboutResources.txt" />
+    <AndroidResource Include="Resources\layout\Main.axml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\values\strings.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-hdpi\Icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-mdpi\Icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-xhdpi\Icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <Compile Include="Properties\AssemblyInfo.fs" />
+    <None Include="Properties\AndroidManifest.xml" />
+    <AndroidAsset Include="Assets\AboutAssets.txt" />
+    <Compile Include="MainActivity.fs" />
+  </ItemGroup>
+  <!-- Props -->
+  <PropertyGroup>
+    <AndroidResgenFile>Resources/Resource.designer.cs</AndroidResgenFile>
+    <AndroidUseIntermediateDesignerFile>false</AndroidUseIntermediateDesignerFile>
+    <FSharpAndroidResources_AssemblyName>$(AssemblyName).Resource</FSharpAndroidResources_AssemblyName>
+    <FSharpAndroidResources_AssemblyPath>$(BaseIntermediateOutputPath)obj\$(Configuration)\$(AssemblyName).Resource.dll</FSharpAndroidResources_AssemblyPath>
+  </PropertyGroup>
+  <ItemGroup Condition=" Exists($(FSharpAndroidResources_AssemblyPath)) ">
+    <Reference Include="$(FSharpAndroidResources_AssemblyName)">
+      <HintPath>$(FSharpAndroidResources_AssemblyPath)</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Targets -->
+  <Target Name="FSharpAndroidResource" BeforeTargets="CoreCompile" DependsOnTargets="ResolveProjectReferences;ResolveAssemblyReferences">
+    <Csc Sources="$(AndroidResgenFile)" OutputAssembly="$(FSharpAndroidResources_AssemblyPath)" EmitDebugInformation="true" NoConfig="true" NoStandardLib="true" NoLogo="true" Platform="$(Platform)" References="@(_ResolveAssemblyReferenceResolvedFiles)" TargetType="library" UseHostCompilerIfAvailable="true" Optimize="$(Optimize)" />
+
+    <ItemGroup>
+      <_Tmp_ResolveAssemblyReferenceResolvedFiles Include="@(_ResolveAssemblyReferenceResolvedFiles)" />
+      <_ResolveAssemblyReferenceResolvedFiles Remove="@(_Tmp_ResolveAssemblyReferenceResolvedFiles)" />
+      <_ResolveAssemblyReferenceResolvedFiles Include="$(FSharpAndroidResources_AssemblyPath);@(_Tmp_ResolveAssemblyReferenceResolvedFiles)" />
+    </ItemGroup>
+
+    <Message Text="DEBUG AFTER FSHARP: @(_ResolveAssemblyReferenceResolvedFiles)" Importance="high" />
+  </Target>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.FSharp.targets" />
+</Project>

@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-android</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <DisableImplicitFSharpCoreReference>true</DisableImplicitFSharpCoreReference>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="AndroidManifest.xml" />
+    <Compile Include="MainActivity.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FSharp.Core" Version="6.0.1" />
+  </ItemGroup>
+
+  <!-- Props -->
+  <PropertyGroup>
+    <AndroidResgenFile>Resources/Resource.designer.cs</AndroidResgenFile>
+    <AndroidUseIntermediateDesignerFile>false</AndroidUseIntermediateDesignerFile>
+    <FSharpAndroidResources_AssemblyName>$(AssemblyName).Resource</FSharpAndroidResources_AssemblyName>
+    <FSharpAndroidResources_AssemblyPath>$(BaseIntermediateOutputPath)$(Configuration)\$(TargetFramework)\$(AssemblyName).Resource.dll</FSharpAndroidResources_AssemblyPath>
+  </PropertyGroup>
+  <ItemGroup Condition=" Exists($(FSharpAndroidResources_AssemblyPath)) ">
+    <Reference Include="$(FSharpAndroidResources_AssemblyName)">
+      <HintPath>$(FSharpAndroidResources_AssemblyPath)</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Targets -->
+  <Target Name="FSharpAndroidResource" BeforeTargets="CoreCompile" DependsOnTargets="ResolveProjectReferences;ResolveAssemblyReferences">
+    <Csc Sources="$(AndroidResgenFile)" OutputAssembly="$(FSharpAndroidResources_AssemblyPath)" EmitDebugInformation="true" NoConfig="true" NoStandardLib="true" NoLogo="true" Platform="$(Platform)" References="@(_ResolveAssemblyReferenceResolvedFiles)" TargetType="library" UseHostCompilerIfAvailable="true" Optimize="$(Optimize)" />
+
+    <ItemGroup>
+      <_Tmp_ResolveAssemblyReferenceResolvedFiles Include="@(_ResolveAssemblyReferenceResolvedFiles)" />
+      <_ResolveAssemblyReferenceResolvedFiles Remove="@(_Tmp_ResolveAssemblyReferenceResolvedFiles)" />
+      <_ResolveAssemblyReferenceResolvedFiles Include="$(FSharpAndroidResources_AssemblyPath);@(_Tmp_ResolveAssemblyReferenceResolvedFiles)" />
+    </ItemGroup>
+
+    <Message Text="DEBUG AFTER FSHARP: @(_ResolveAssemblyReferenceResolvedFiles)" Importance="high" />
+  </Target>
+</Project>
