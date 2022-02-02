@@ -19,7 +19,7 @@
         </Reference>
     </ItemGroup>
 
-    <Target Name="CompileResourceDesignerCsForFSharp" BeforeTargets="CoreCompile" DependsOnTargets="ResolveProjectReferences;ResolveAssemblyReferences">
+    <Target Name="CompileResourceDesignerForFSharp" BeforeTargets="CoreCompile" DependsOnTargets="ResolveProjectReferences;ResolveAssemblyReferences">
 
         <!-- Compile Resource.designer.cs into a dll -->
         <Csc
