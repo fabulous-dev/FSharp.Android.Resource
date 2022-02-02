@@ -9,6 +9,12 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "App.Android.Net6", "tests\A
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "App.Android.NetFX", "tests\App.Android.NetFX\App.Android.NetFX.fsproj", "{542351D4-6C1F-4A8F-A342-6B3164E758EA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FSharp.Android.Resource", "FSharp.Android.Resource", "{65769B5A-A981-468D-9075-1FFC982D9050}"
+	ProjectSection(SolutionItems) = preProject
+		FSharp.Android.Resource.props = FSharp.Android.Resource.props
+		FSharp.Android.Resource.targets = FSharp.Android.Resource.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

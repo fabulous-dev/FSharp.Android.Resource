@@ -1,0 +1,44 @@
+<Project>
+    <PropertyGroup>
+        <!-- Force both .NET Fx and .NET 6.0 to output the Resource.designer.cs file at the same place -->
+        <AndroidResgenFile>Resources/Resource.designer.cs</AndroidResgenFile>
+        <AndroidUseIntermediateDesignerFile>false</AndroidUseIntermediateDesignerFile>
+
+        <!-- Suffix ".Resource" to the assembly name of the project we're building for -->
+        <!-- .NET Fx and .NET 6.0 have slightly different paths -->
+        <FSharpAndroidResource_AssemblyName>$(AssemblyName).Resource</FSharpAndroidResource_AssemblyName>
+        <FSharpAndroidResource_AssemblyFolder>obj/$(Configuration)/</FSharpAndroidResource_AssemblyFolder>
+        <FSharpAndroidResource_AssemblyFolder Condition=" '$(TargetFramework)' != '' ">$(BaseIntermediateOutputPath)$(Configuration)/$(TargetFramework)/</FSharpAndroidResource_AssemblyFolder>
+        <FSharpAndroidResource_AssemblyPath>$(FSharpAndroidResource_AssemblyFolder)$(AssemblyName).Resource.dll</FSharpAndroidResource_AssemblyPath>
+    </PropertyGroup>
+    
+    <!-- Include the resources assembly if generated -->
+    <ItemGroup Condition=" Exists($(FSharpAndroidResource_AssemblyPath)) ">
+        <Reference Include="$(FSharpAndroidResource_AssemblyName)">
+            <HintPath>$(FSharpAndroidResource_AssemblyPath)</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <Target Name="CompileResourceDesignerCsForFSharp" BeforeTargets="CoreCompile" DependsOnTargets="ResolveProjectReferences;ResolveAssemblyReferences">
+
+        <!-- Compile Resource.designer.cs into a dll -->
+        <Csc
+            Sources="$(AndroidResgenFile)"
+            OutputAssembly="$(FSharpAndroidResource_AssemblyPath)"
+            NoConfig="true"
+            NoStandardLib="true"
+            NoLogo="true"
+            Platform="$(Platform)"
+            References="@(_ResolveAssemblyReferenceResolvedFiles)"
+            TargetType="library"
+            UseHostCompilerIfAvailable="true"
+            Optimize="$(Optimize)" />
+        
+        <!-- Add the new generated dll to the resolved assemblies -->
+        <!-- <ItemGroup>
+            <_Tmp_ResolveAssemblyReferenceResolvedFiles Include="@(_ResolveAssemblyReferenceResolvedFiles)" />
+            <_ResolveAssemblyReferenceResolvedFiles Remove="@(_Tmp_ResolveAssemblyReferenceResolvedFiles)" />
+            <_ResolveAssemblyReferenceResolvedFiles Include="$(FSharpAndroidResource_AssemblyPath);@(_Tmp_ResolveAssemblyReferenceResolvedFiles)" />
+        </ItemGroup> -->
+    </Target>
+</Project>

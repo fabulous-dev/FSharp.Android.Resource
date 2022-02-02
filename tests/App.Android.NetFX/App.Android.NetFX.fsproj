@@ -118,4 +118,5 @@
     <Message Text="DEBUG AFTER FSHARP: @(_ResolveAssemblyReferenceResolvedFiles)" Importance="high" />
   </Target>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.FSharp.targets" />
+  <Import Project="..\..\FSharp.Android.Resource.targets" />
 </Project>
