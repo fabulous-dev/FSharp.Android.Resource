@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <Description>MSBuild task to expose resources to F# .NET Fx / .NET 6 Android projects</Description>
+        <Authors>Fabulous contributors</Authors>
+        <PackageProjectUrl>https://github.com/fabulousfx/FSharp.Android.Resource</PackageProjectUrl>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/fabulousfx/FSharp.Android.Resource.git</RepositoryUrl>
+        <PackageTags>fsharp;android;resources</PackageTags>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <PackageType>Dependency</PackageType>
+        <NoBuild>true</NoBuild>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <!-- https://github.com/dotnet/templating/issues/2350#issuecomment-610431461 -->
+        <NoDefaultExcludes>true</NoDefaultExcludes>
+        <VersionPrefix>1.0.0</VersionPrefix>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <NoWarn>$(NoWarn);NU5128</NoWarn>
+    </PropertyGroup>
+    <ItemGroup>
+        <Content Include="FSharp.Android.Resource.targets">
+            <PackagePath>build/</PackagePath>
+        </Content>
+    </ItemGroup>
+</Project>
