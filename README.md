@@ -8,7 +8,7 @@ MSBuild task to expose resources to F# .NET Fx / .NET 6 Android projects
 1. Replace the old type provider with the new package in your Android project
 ```diff
 - <PackageReference Include="Xamarin.Android.FSharp.ResourceProvider" />
-+ <PackageReference Include="FSharp.Android.Resource" Version="0.0.2-beta" />
++ <PackageReference Include="FSharp.Android.Resource" />
 ```
 
 2. Remove old properties from the Android fsproj
