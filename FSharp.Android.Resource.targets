@@ -19,7 +19,12 @@
         </Reference>
     </ItemGroup>
 
-    <Target Name="CompileResourceDesignerForFSharp" BeforeTargets="CoreCompile" DependsOnTargets="ResolveProjectReferences;ResolveAssemblyReferences">
+    <Target
+        Name="CompileResourceDesignerForFSharp"
+        BeforeTargets="CoreCompile"
+        DependsOnTargets="ResolveProjectReferences;ResolveAssemblyReferences"
+        Inputs="$(AndroidResgenFile)"
+        Outputs="$(FSharpAndroidResource_AssemblyPath)">
 
         <!-- Compile Resource.designer.cs into a dll -->
         <Csc
@@ -33,12 +38,6 @@
             TargetType="library"
             UseHostCompilerIfAvailable="true"
             Optimize="$(Optimize)" />
-        
-        <!-- Add the new generated dll to the resolved assemblies -->
-        <!-- <ItemGroup>
-            <_Tmp_ResolveAssemblyReferenceResolvedFiles Include="@(_ResolveAssemblyReferenceResolvedFiles)" />
-            <_ResolveAssemblyReferenceResolvedFiles Remove="@(_Tmp_ResolveAssemblyReferenceResolvedFiles)" />
-            <_ResolveAssemblyReferenceResolvedFiles Include="$(FSharpAndroidResource_AssemblyPath);@(_Tmp_ResolveAssemblyReferenceResolvedFiles)" />
-        </ItemGroup> -->
+            
     </Target>
 </Project>
