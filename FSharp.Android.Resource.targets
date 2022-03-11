@@ -11,13 +11,6 @@
         <FSharpAndroidResource_AssemblyFolder Condition=" '$(TargetFramework)' != '' ">obj/$(Configuration)/$(TargetFramework)/</FSharpAndroidResource_AssemblyFolder>
         <FSharpAndroidResource_AssemblyPath>$(FSharpAndroidResource_AssemblyFolder)$(AssemblyName).Resource.dll</FSharpAndroidResource_AssemblyPath>
     </PropertyGroup>
-    
-    <!-- Include the resources assembly if generated -->
-    <ItemGroup Condition=" Exists($(FSharpAndroidResource_AssemblyPath)) ">
-        <Reference Include="$(FSharpAndroidResource_AssemblyName)">
-            <HintPath>$(FSharpAndroidResource_AssemblyPath)</HintPath>
-        </Reference>
-    </ItemGroup>
 
     <Target
         Name="CompileResourceDesignerForFSharp"
@@ -39,5 +32,12 @@
             UseHostCompilerIfAvailable="true"
             Optimize="$(Optimize)" />
             
+        <!-- Include the resources assembly if generated -->
+        <ItemGroup Condition=" Exists('$(FSharpAndroidResource_AssemblyPath)') ">
+            <ReferencePath Include="$(FSharpAndroidResource_AssemblyPath)">
+                <HintPath>$(FSharpAndroidResource_AssemblyPath)</HintPath>
+            </ReferencePath>
+            <FileWrites Include="$(FSharpAndroidResource_AssemblyPath)" />
+        </ItemGroup>
     </Target>
 </Project>
