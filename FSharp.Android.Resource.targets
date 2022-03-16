@@ -10,7 +10,18 @@
         <FSharpAndroidResource_AssemblyFolder>obj/$(Configuration)/</FSharpAndroidResource_AssemblyFolder>
         <FSharpAndroidResource_AssemblyFolder Condition=" '$(TargetFramework)' != '' ">obj/$(Configuration)/$(TargetFramework)/</FSharpAndroidResource_AssemblyFolder>
         <FSharpAndroidResource_AssemblyPath>$(FSharpAndroidResource_AssemblyFolder)$(AssemblyName).Resource.dll</FSharpAndroidResource_AssemblyPath>
+        <FSharpAndroidResource_AssemblyExists Condition=' Exists($(FSharpAndroidResource_AssemblyPath)) '>true</FSharpAndroidResource_AssemblyExists>
+
+        <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
     </PropertyGroup>
+
+    <!-- VS Mac and Rider on Mac don't load dll references for IntelliSense at a late stage -->
+    <!-- So we force it on reload -->
+    <ItemGroup Condition=" '$(FSharpAndroidResource_AssemblyExists)|$(IsOSX)|$(BuildingInsideVisualStudio)' == 'true|true|True' ">
+        <Reference Include="$(FSharpAndroidResource_AssemblyName)">
+            <HintPath>$(FSharpAndroidResource_AssemblyPath)</HintPath>
+        </Reference>
+    </ItemGroup>
 
     <Target
         Name="CompileResourceDesignerForFSharp"
@@ -32,8 +43,8 @@
             UseHostCompilerIfAvailable="true"
             Optimize="$(Optimize)" />
             
-        <!-- Include the resources assembly if generated -->
-        <ItemGroup Condition=" Exists('$(FSharpAndroidResource_AssemblyPath)') ">
+        <!-- Include the resources assembly -->
+        <ItemGroup>
             <ReferencePath Include="$(FSharpAndroidResource_AssemblyPath)">
                 <HintPath>$(FSharpAndroidResource_AssemblyPath)</HintPath>
             </ReferencePath>
