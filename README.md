@@ -19,6 +19,5 @@ MSBuild task to expose resources to F# .NET Fx / .NET 6 Android projects
 </PropertyGroup>
 ```
 
-3. Compile 2 times (first time will fail because FSharp.Android.Resource needs to generate the dll first)
-4. If you're in an IDE, close/reopen either the Android project or the whole solution
-5. Everything should be working, enjoy!
+3. (macOS only) If you're in an IDE and you see errors, unload/reload the Android project
+4. Everything should be working, enjoy!
