@@ -44,7 +44,7 @@
             Optimize="$(Optimize)" />
             
         <!-- Include the resources assembly -->
-        <ItemGroup>
+        <ItemGroup Condition=" '$(FSharpAndroidResource_AssemblyExists)|$(IsOSX)|$(BuildingInsideVisualStudio)' != 'true|true|True' ">
             <ReferencePath Include="$(FSharpAndroidResource_AssemblyPath)">
                 <HintPath>$(FSharpAndroidResource_AssemblyPath)</HintPath>
             </ReferencePath>
