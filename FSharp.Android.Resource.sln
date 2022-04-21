@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FSharp.Android.Resource", "FSharp.Android.Resource", "{65769B5A-A981-468D-9075-1FFC982D9050}"
 	ProjectSection(SolutionItems) = preProject
 		FSharp.Android.Resource.targets = FSharp.Android.Resource.targets
+		FSharp.Android.Resource.proj = FSharp.Android.Resource.proj
 	EndProjectSection
 EndProject
 Global
