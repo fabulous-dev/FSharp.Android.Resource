@@ -28,8 +28,10 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <PlatformTarget></PlatformTarget>
     <JavaMaximumHeapSize></JavaMaximumHeapSize>
-    <AndroidUseAapt2>false</AndroidUseAapt2>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
     <AndroidManifest></AndroidManifest>
+    <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
+    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,11 +47,12 @@
     <AndroidManifest></AndroidManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FSharp.Core, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\..\packages\FSharp.Core.6.0.1\lib\netstandard2.1\FSharp.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="FSharp.Core, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\FSharp.Core.6.0.4\lib\netstandard2.1\FSharp.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Java.Interop" />
     <Reference Include="System" />
+    <Reference Include="System.Numerics.Vectors" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
