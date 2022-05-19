@@ -9,12 +9,13 @@ open Android.Runtime
 open Android.Views
 open Android.Widget
 
-
 [<Activity (Label = "App.Android.Net6", MainLauncher = true, Icon = "@mipmap/icon")>]
 type MainActivity () =
     inherit Activity ()
 
     let mutable count:int = 1
+
+    do Resource.UpdateIdValues()
 
     override this.OnCreate (bundle) =
 

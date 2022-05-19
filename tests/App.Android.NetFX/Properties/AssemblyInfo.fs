@@ -4,10 +4,6 @@ open System.Reflection
 open System.Runtime.CompilerServices
 open Android.App
 
-// the name of the type here needs to match the name inside the ResourceDesigner attribute
-type Resources = App.Android.NetFX.Resource
-[<assembly: Android.Runtime.ResourceDesigner("App.Android.NetFX.Resources", IsApplication=true)>]
-
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
