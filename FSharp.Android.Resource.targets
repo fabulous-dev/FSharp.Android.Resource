@@ -8,7 +8,7 @@
         <!-- .NET Fx and .NET 6.0 have slightly different paths -->
         <FSharpAndroidResource_AssemblyName>$(AssemblyName).Resource</FSharpAndroidResource_AssemblyName>
         <FSharpAndroidResource_AssemblyFolder>obj/$(Configuration)/</FSharpAndroidResource_AssemblyFolder>
-        <FSharpAndroidResource_AssemblyFolder Condition=" '$(TargetFramework)' != '' ">obj/$(Configuration)/$(TargetFramework)/</FSharpAndroidResource_AssemblyFolder>
+        <FSharpAndroidResource_AssemblyFolder Condition=" '$(TargetFramework)' != '' AND $(TargetFramework.StartsWith('monoandroid')) == false ">obj/$(Configuration)/$(TargetFramework)/</FSharpAndroidResource_AssemblyFolder>
         <FSharpAndroidResource_AssemblyPath>$(FSharpAndroidResource_AssemblyFolder)$(AssemblyName).Resource.dll</FSharpAndroidResource_AssemblyPath>
         <FSharpAndroidResource_AssemblyExists Condition=' Exists($(FSharpAndroidResource_AssemblyPath)) '>true</FSharpAndroidResource_AssemblyExists>
     </PropertyGroup>
