@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <Description>MSBuild task to expose resources to F# .NET Fx / .NET 6 Android projects</Description>
+        <Description>MSBuild task to expose resources to F# .NET Fx / .NET Android projects</Description>
         <Authors>Fabulous contributors</Authors>
         <PackageProjectUrl>https://github.com/fabulousfx/FSharp.Android.Resource</PackageProjectUrl>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
