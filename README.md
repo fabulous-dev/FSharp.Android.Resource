@@ -1,7 +1,7 @@
 FSharp.Android.Resource
 --
 
-MSBuild task to expose resources to F# .NET Fx / .NET 6 Android projects
+MSBuild task to expose resources to F# .NET Fx / .NET 6 & 7 Android projects
 
 ### How to use
 
