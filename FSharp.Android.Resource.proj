@@ -2,9 +2,9 @@
     <PropertyGroup>
         <Description>MSBuild task to expose resources to F# .NET Fx / .NET Android projects</Description>
         <Authors>Fabulous contributors</Authors>
-        <PackageProjectUrl>https://github.com/fabulousfx/FSharp.Android.Resource</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/fabulous-dev/FSharp.Android.Resource</PackageProjectUrl>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/fabulousfx/FSharp.Android.Resource.git</RepositoryUrl>
+        <RepositoryUrl>https://github.com/fabulous-dev/FSharp.Android.Resource.git</RepositoryUrl>
         <PackageTags>fsharp;android;resources</PackageTags>
         <NeutralLanguage>en-US</NeutralLanguage>
         <PackageType>Dependency</PackageType>
