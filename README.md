@@ -1,8 +1,8 @@
 FSharp.Android.Resource
 --
 
-MSBuild task to expose resources to F# Xamarin.Android / .NET Android projects up until net7.0-android.
-This is no longer needed as of net8.0.
+MSBuild task to expose resources to F# Xamarin.Android / .NET Android projects up until .NET 7.
+This is no longer needed as of .NET 8.
 
 ### How to use
 
