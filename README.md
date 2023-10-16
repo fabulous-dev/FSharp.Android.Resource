@@ -1,8 +1,17 @@
 FSharp.Android.Resource
 --
 
+> [!IMPORTANT]
+> This library is no longer needed for .NET 8 and higher.  
+> Please remove it from your projects when you migrate.
+
 MSBuild task to expose resources to F# Xamarin.Android / .NET Android projects up until .NET 7.
-This is no longer needed as of .NET 8 because the Resource.Designer.cs C# file has been replaced with the _Microsoft.Android.Resource.Designer assembly which works cross-language.
+
+### Why is it no longer needed for .NET 8 and higher?
+
+Starting .NET 8, F# Android projects work out of the box without the need for this library.
+
+Microsoft improved access to assets in your Android apps. They generate an assembly named `_Microsoft.Android.Resource.Designer` which contains all your Android assets, instead of silently injecting C# code into your F# projects.
 
 ### How to use
 
