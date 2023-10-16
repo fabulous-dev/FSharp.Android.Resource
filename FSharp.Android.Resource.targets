@@ -18,7 +18,7 @@
             <HintPath>$(FSharpAndroidResource_AssemblyPath)</HintPath>
         </Reference>
     </ItemGroup>
-
+    <Error Condition="$(TargetFramework.StartsWith('net')) AND $([MSBuild]::VersionGreaterThanOrEquals($(TargetFrameworkVersion), '8'))" Text="FSharp.Android.Resource is no longer needed in .NET 8+, please remove the PackageRefernce of FSharp.Android.Resource. This is because the Resource.Designer.cs C# file has been replaced with the _Microsoft.Android.Resource.Designer assembly which works cross-language." />
     <Target
         Name="CompileResourceDesignerForFSharp"
         BeforeTargets="CoreCompile"

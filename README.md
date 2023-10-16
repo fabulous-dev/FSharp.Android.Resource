@@ -1,7 +1,8 @@
 FSharp.Android.Resource
 --
 
-MSBuild task to expose resources to F# .NET Fx / .NET Android projects
+MSBuild task to expose resources to F# Xamarin.Android / .NET Android projects up until .NET 7.
+This is no longer needed as of .NET 8 because the Resource.Designer.cs C# file has been replaced with the _Microsoft.Android.Resource.Designer assembly which works cross-language.
 
 ### How to use
 
