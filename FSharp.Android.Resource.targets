@@ -19,15 +19,15 @@
         </Reference>
     </ItemGroup>
 
-    <Error Condition="$(TargetFramework.StartsWith('net')) AND $([MSBuild]::VersionGreaterThanOrEquals($(TargetFrameworkVersion), '8'))"
-           Text="Please remove FSharp.Android.Resource from your project. It is no longer needed in .NET 8.0 and higher." />
-
     <Target
         Name="CompileResourceDesignerForFSharp"
         BeforeTargets="CoreCompile"
         DependsOnTargets="ResolveProjectReferences;ResolveAssemblyReferences;UpdateAndroidResources"
         Inputs="$(AndroidResgenFile)"
         Outputs="$(FSharpAndroidResource_AssemblyPath)">
+
+        <Error Condition="$(TargetFramework.StartsWith('net')) AND $([MSBuild]::VersionGreaterThanOrEquals($(TargetFrameworkVersion), '8'))"
+               Text="Please remove FSharp.Android.Resource from your project. It is no longer needed in .NET 8.0 and higher." />
 
         <!-- Compile Resource.designer.cs into a dll -->
         <Csc
